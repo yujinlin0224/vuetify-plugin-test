@@ -1,0 +1,97 @@
+root: true
+env:
+  node: true
+  es2022: true
+parser: vue-eslint-parser
+parserOptions:
+  ecmaVersion: latest
+  sourceType: module
+extends:
+  # - 'airbnb-base'
+  # - 'airbnb-typescript/base'
+  # - 'plugin:@typescript-eslint/recommended'
+  - 'plugin:@typescript-eslint/recommended-requiring-type-checking'
+  - 'plugin:@typescript-eslint/strict'
+  - 'plugin:import/recommended'
+  - 'plugin:import/typescript'
+  - 'plugin:vue/vue3-recommended'
+  - '@vue/eslint-config-airbnb-with-typescript'
+  - '@vue/eslint-config-prettier'
+  - 'plugin:prettier/recommended'
+ignorePatterns:
+  - 'dist/**/*'
+rules:
+  no-console: warn
+  no-debugger: warn
+
+  # '@typescript-eslint/no-unsafe-call': off
+  '@typescript-eslint/no-unsafe-argument': off
+
+  # Override Airbnb:
+  import/no-extraneous-dependencies:
+    - error
+    - devDependencies:
+        # Modify from eslint-config-airbnb-base/rules/imports.js
+        - '**/__tests__/**' # jest pattern
+        - '**/__mocks__/**' # jest pattern
+        - 'test.{js,jsx,ts,tsx}' # repos with a single test file
+        - 'test-*.{js,jsx,ts,tsx}' # repos with multiple top-level test files
+        - '**/*{.,_}{test,spec}.{js,jsx,ts,tsx}' # tests where the extension or filename suffix denotes that it is a test
+        - '**/jest.config.{js,ts}' # jest config
+        - '**/jest.setup.{js,ts}' # jest setup
+        # Add for Vite support
+        - '**/vite.config.{js,ts}' # vite config
+      optionalDependencies: false
+  no-useless-computed-key: off # error in eslint-config-airbnb-base/rules/es6.js
+  no-shadow: off # error in eslint-config-airbnb-base/rules/variables.js
+  object-shorthand: # airbnb 3.3,3.4
+    - error
+    - always
+    - ignoreConstructors: false
+      avoidQuotes: false # true in airbnb
+  func-style: # airbnb 7.1
+    - error
+    - declaration
+    - allowArrowFunctions: true
+  no-param-reassign: # airbnb 7.12
+    - error
+    - props: false # true in airbnb
+  import/prefer-default-export: off # airbnb 10.6: error
+
+  # Override Vue:
+  vue/block-tag-newline: error
+  vue/component-name-in-template-casing:
+    - error
+    - PascalCase
+    - registeredComponentsOnly: false
+  vue/custom-event-name-casing: error
+  vue/match-component-file-name:
+    - error
+    - extensions: ['jsx', 'tsx', 'vue']
+      shouldMatchCase: true
+  vue/next-tick-style: error
+  # vue/no-bare-strings-in-template: warn # enable when i18n
+  vue/no-empty-component-block: error
+  vue/no-multiple-objects-in-class: error
+  vue/no-potential-component-option-typo: error
+  vue/no-reserved-component-names:
+    - error
+    - disallowVueBuiltInComponents: true
+      disallowVue3BuiltInComponents: true
+  vue/no-useless-mustaches:
+    - error
+    - ignoreIncludesComment: false
+      ignoreStringEscape: true
+  vue/no-useless-v-bind:
+    - error
+    - ignoreIncludesComment: false
+      ignoreStringEscape: true
+  vue/padding-line-between-blocks: error
+  vue/require-direct-export: error
+  vue/require-name-property: error
+  vue/v-for-delimiter-style: error
+  vue/v-on-event-hyphenation: error
+  vue/v-on-handler-style:
+    - error
+    - inline
+  # vue/block-lang
