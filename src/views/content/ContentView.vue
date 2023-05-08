@@ -1,8 +1,8 @@
 <template>
-  <VCard class="ma-4">
+  <VCard>
     <VCardItem>
       <VIcon>mdi-monitor</VIcon>
-      Plugin is running
+      Content view is mounted at {{ mountedTime }}
     </VCardItem>
     <VCardActions>
       <VBtn @click="click()">Click it</VBtn>
@@ -11,8 +11,12 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
+
+const mountedTime = ref(new Date().toLocaleTimeString())
+
 function click() {
-  console.log('click')
+  console.log('click from content')
 }
 </script>
 
@@ -52,7 +56,7 @@ $vuetify-classes: '', '.display-4', '.display-3', '.display-2', '.display-1', '.
   '.text-xl-button', '.text-xl-caption', '.text-xl-overline';
 
 @each $class in $vuetify-classes {
-  #content #{$class} {
+  #plugin-content #{$class} {
     font-family: 'Roboto', 'Noto Sans', 'Noto Sans TC', sans-serif !important;
   }
 }

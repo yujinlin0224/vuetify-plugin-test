@@ -21,7 +21,7 @@ function generateManifest(): Object {
   }
 }
 
-const webExtConfig = YAML.parse(fs.readFileSync('web-ext.config.yaml', 'utf8')) as Object
+// const webExtConfig = YAML.parse(fs.readFileSync('web-ext.config.yaml', 'utf8')) as Object
 
 // TODO: https://github.com/antfu/unplugin-auto-import
 
@@ -43,10 +43,10 @@ export default defineConfig({
     webExtensionPlugin({
       manifest: generateManifest,
       browser: 'chrome',
-      webExtConfig,
-      scriptViteConfig: {
-        plugins: generatePlugins(),
-      },
+      // webExtConfig,
+      // scriptViteConfig: {
+      //   plugins: generatePlugins(),
+      // },
     }),
   ],
   resolve: {
