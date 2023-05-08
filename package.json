@@ -1,8 +1,7 @@
 {
-  "name": "allbet-helper",
+  "name": "vuetify-plugin-test",
   "version": "0.0.0",
   "private": true,
-  "description": "Allbet Helper",
   "license": "UNLICENSED",
   "type": "module",
   "scripts": {
